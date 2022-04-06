@@ -17,7 +17,7 @@ if($_SESSION['login'] == true){
 $dataUser = new dataUser();
 $getUser = $dataUser->getUser();
 if($getUser == "Connection failed"){
-    $invalid = "Connection failed";
+    echo "<script>alert('Connection failed')</script>";
 }
 
 

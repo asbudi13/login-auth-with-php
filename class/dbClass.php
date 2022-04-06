@@ -4,7 +4,7 @@ class dbClass {
     const SERVERNAME = "localhost";
     const USERNAME = "root";
     const PASSWORD = "";
-    const DBNAME = "simple_login";
+    const DBNAME = "simple_logiN";
     
     protected function dbConn(){
         // Create connection
