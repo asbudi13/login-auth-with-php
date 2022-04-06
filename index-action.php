@@ -13,6 +13,14 @@ if($_SESSION['login'] == true){
     exit();
 }
 
+// check connection
+$dataUser = new dataUser();
+$getUser = $dataUser->getUser();
+if($getUser == "Connection failed"){
+    $invalid = "Connection failed";
+}
+
+
 if(isset($_POST['login_now'])){
     // check the input
     if(empty($_POST['username']) || empty($_POST['password'])){

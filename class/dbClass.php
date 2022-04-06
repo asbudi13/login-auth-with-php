@@ -10,12 +10,8 @@ class dbClass {
         // Create connection
         $conn = new mysqli(self::SERVERNAME, self::USERNAME, self::PASSWORD, self::DBNAME);
 
-        // Check connection
-        if ($conn->connect_error) {
-            return die("Connection failed: " . $conn->connect_error);
-        }else{
-            return $conn;
-        }
+        // return connection
+        return $conn;
     }
 }
 

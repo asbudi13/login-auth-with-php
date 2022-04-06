@@ -10,22 +10,26 @@ class dataUser extends dbClass{
     }
 
     public function getUser(){
-        // execute query
-        $executed = $this->dbConn()->query($this->sql);
-
-        // loop data and save to variabel data array
-        while($row = $executed->fetch_assoc()){
-            $data[] = $row;
+        if($this->dbConn()->connect_error){
+            return "Connection failed";
+        }else{
+            // execute query
+            $executed = $this->dbConn()->query($this->sql);
+    
+            // loop data and save to variabel data array
+            while($row = $executed->fetch_assoc()){
+                $data[] = $row;
+            }
+    
+            $result['data'] = $data;
+            $result['nums'] = $executed->num_rows;
+    
+            // close the coneection
+            mysqli_close($this->dbConn());
+    
+            // return the value
+            return $result;
         }
-
-        $result['data'] = $data;
-        $result['nums'] = $executed->num_rows;
-
-        // close the coneection
-        mysqli_close($this->dbConn());
-
-        // return the value
-        return $result;
     }
 
 }
