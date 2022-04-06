@@ -8,6 +8,9 @@ require_once "class/dbClass.php";
 // class getdata File
 require_once "class/dataUser.php";
 
+// class updatedata File
+require_once "class/updateUser.php";
+
 if($_SESSION['login'] == true){
     header('Location: home.php');
     exit();
@@ -46,10 +49,16 @@ if(isset($_POST['login_now'])){
 
             // check password
             if(password_verify($passwordInput, $password)){
+
+                // last Login
+                $lasLogin = new updateUser($username);
+
                 // data login session
                 $_SESSION['login'] = true;
+
                 // username to session
                 $_SESSION['username'] = $username;
+
                 header('Location: home.php');
                 exit();
             }else{
